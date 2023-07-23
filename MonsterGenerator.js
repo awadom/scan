@@ -1,5 +1,6 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
+import randomWords from "random-words"; // Import the random-words library
 
 const monsterAttributes = {}; // Object to store barcode-to-monster attributes mapping
 
@@ -12,7 +13,7 @@ const generateMonster = (barcodeData) => {
     const attributesFromBarcode = extractAttributesFromBarcodeData(barcodeData);
 
     // For simplicity, let's generate a random monster name and color
-    const randomName = "Monster " + Math.floor(Math.random() * 1000);
+    const randomName = capitalizeFirstLetter(randomWords({ exactly: 2, join: "-" }));
     const randomColor = "#" + ((Math.random() * 0xffffff) << 0).toString(16);
 
     // Create the monster object with generated attributes, including the sprite
