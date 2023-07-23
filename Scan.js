@@ -136,10 +136,10 @@ const styles = StyleSheet.create({
     // Update the monsterImage style to create an egg shape
     monsterImage: {
         width: 30,
-        height: 30, // Adjust the height to make it look like an egg shape
-        borderRadius: 25, // Change the borderRadius to make it look like an egg shape
-        transform: [{ scaleY: 1.3 }], // Apply scaleY to adjust the height of the egg shape
-      },
+        height: 50, // Adjust the height to make it look like an egg shape
+        borderRadius: 30, // Change the borderRadius to make it look like an egg shape
+        transform: [{ scaleY: 0.6 }], // Apply scaleY to adjust the height of the egg shape
+      },      
     modalText: {
       fontSize: 18,
       marginBottom: 16,

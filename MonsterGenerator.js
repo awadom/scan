@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import randomWords from "random-words"; // Import the random-words library
+import { generate as generateRandomWord } from "random-words";
 
 const monsterAttributes = {}; // Object to store barcode-to-monster attributes mapping
 
@@ -9,25 +9,24 @@ const generateMonster = (barcodeData) => {
     // If the barcode data already exists in the mapping, return the existing monster
     return monsterAttributes[barcodeData];
   } else {
-    // Extract attribute data from the barcodeData (this is just an example, adjust as needed)
-    const attributesFromBarcode = extractAttributesFromBarcodeData(barcodeData);
+    // Generate a unique monster name based on barcodeData
+    const randomName = generateRandomWord();
 
-    // For simplicity, let's generate a random monster name and color
-    const randomName = capitalizeFirstLetter(randomWords({ exactly: 2, join: "-" }));
+    // For simplicity, let's generate a random monster color
     const randomColor = "#" + ((Math.random() * 0xffffff) << 0).toString(16);
 
     // Create the monster object with generated attributes, including the sprite
     const generatedMonster = {
       name: randomName,
       color: randomColor,
-      hairType: attributesFromBarcode.hairType || generateRandomAttribute(hairTypes),
-      headType: attributesFromBarcode.headType || generateRandomAttribute(headTypes),
-      species: attributesFromBarcode.species || generateRandomAttribute(species),
-      strength: attributesFromBarcode.strength || generateRandomStat(10, 50), // Stat between 10 and 50 (inclusive)
-      agility: attributesFromBarcode.agility || generateRandomStat(10, 50), // Stat between 10 and 50 (inclusive)
-      dexterity: attributesFromBarcode.dexterity || generateRandomStat(10, 50), // Stat between 10 and 50 (inclusive)
-      intelligence: attributesFromBarcode.intelligence || generateRandomStat(10, 50), // Stat between 10 and 50 (inclusive)
-      magic: attributesFromBarcode.magic || generateRandomStat(10, 50), // Stat between 10 and 50 (inclusive)
+      hairType: generateRandomAttribute(hairTypes),
+      headType: generateRandomAttribute(headTypes),
+      species: generateRandomAttribute(species),
+      strength: generateRandomStat(10, 50), // Stat between 10 and 50 (inclusive)
+      agility: generateRandomStat(10, 50), // Stat between 10 and 50 (inclusive)
+      dexterity: generateRandomStat(10, 50), // Stat between 10 and 50 (inclusive)
+      intelligence: generateRandomStat(10, 50), // Stat between 10 and 50 (inclusive)
+      magic: generateRandomStat(10, 50), // Stat between 10 and 50 (inclusive)
     };
 
     // Store the generated monster attributes in the mapping
