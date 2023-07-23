@@ -9,10 +9,8 @@ import {
   TouchableOpacity,
   Modal,
 } from "react-native";
-import Svg, { Circle, Ellipse } from "react-native-svg";
 import { withNavigationFocus } from "react-navigation";
 import { getMonsters, clearMonsters } from "./MonsterStorage";
-import {createMonsterSprite} from "./MonsterSprite"
 
 function MonsterCollection({ isFocused }) {
   const [monsters, setMonsters] = useState([]);
@@ -83,9 +81,7 @@ function MonsterCollection({ isFocused }) {
         {selectedMonster && (
           <View style={styles.modalContainer}>
             {/* Render the unique monster sprite */}
-            <View style={[styles.monsterImage, { backgroundColor: selectedMonster.color }]}>
-              {createMonsterSprite(selectedMonster.color)}
-            </View>
+
             <Text style={styles.modalTitle}>{selectedMonster.name}</Text>
             <Text>Color: {selectedMonster.color}</Text>
             <Text>Height: {selectedMonster.height}</Text>
